@@ -1,0 +1,56 @@
+# Burns Depression Checklist - Score Calculator
+
+questions = [ "Feeling sad or down in the dumps",
+		"Feeling unhappy or blue",
+		"Crying spells or tearfulness",
+		"Feeling discouraged",
+		"Feeling hopeless",
+		"Low self-esteem",
+		"Feeling worthless or inadequate",
+		"Guilt or shame",
+		"Criticizing yourself or blaming yourself",
+		"Loss of interest in family, friends, or colleagues",
+		"Loneliness",
+		"Spending less time with family or friends",
+		"Loss of motivaation",
+		"Loss of interest in work or other activities",
+		"Avoiding work or other activities",
+		"Loss of pleasure or satisfaction in life",
+		"Feeling tired",
+		"Difficulty sleeping or sleeping too much",
+		"Decreased or increased appetite",
+		"Loss of interest in sex",
+		"Worrying about your health",
+		"Do you have any suicidal thoughts?",
+		"Would you like to end your life?",
+		"Do you have a plan for harming yourself?"]
+
+
+def ask(q_num):
+	print(questions[q_num])
+	print("\t    0 -- Not At All\n\t    1 -- Somewhat\n\t    2 -- Moderately\n\t    3 -- A Lot\n\t    4 -- Extremely")
+
+def ask_all():
+	score = 0
+	print("\n", "Type a number 0-4 to indicate how much you have experienced each symptom during the past week, including today. Please answer all 25 items.", "\n")
+	for i, q in enumerate(questions):
+		print("\t", i+1, end=".) ")
+		ask(i)
+		score += int(input("\t>> "))
+	interpret(score)	
+
+def interpret(score):
+	print("Total Score:", score)
+	if score <= 100 and score >= 0:
+		print("here")
+	else:
+		print("here else")
+		# out of bounds error or something
+
+ask_all()
+
+# add something to check for yeses on the last three questions and if so, provide a suicide hotline
+# add internal checks and validation and whatnot
+# make it so I can change previous answers
+# add the interpretation!
+# add a check for each input (right type, not out of bounds, etc.)
