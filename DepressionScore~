@@ -41,20 +41,11 @@ def ask_all():
 
 def interpret(score):
 	print("Total Score:", score)
-	if score <= 100 and score > 75:
-		print("76-100 - extreme depression")
-	elif score > 50:
-		print("51-75 - severe depression")
-	elif score > 25:
-		print("26-50 - moderate depression")
-	elif score > 10:
-		print("11-25 - mild depression")
-	elif score > 5:
-		print("6-10 - normal but unhappy")
-	elif score >= 0:
-		print("0-5 - no depression")
+	if score <= 100 and score >= 0:
+		print("here")
 	else:
-		print("Invalid score.")
+		print("here else")
+		# out of bounds error or something
 
 ask_all()
 
