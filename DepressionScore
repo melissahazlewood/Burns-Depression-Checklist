@@ -26,17 +26,34 @@ questions = [ "Feeling sad or down in the dumps",
 		"Do you have a plan for harming yourself?"]
 
 
-def ask(q_num):
+def printQuestion(q_num):
+	print("\t", q_num+1, end=".) ")
 	print(questions[q_num])
 	print("\t    0 -- Not At All\n\t    1 -- Somewhat\n\t    2 -- Moderately\n\t    3 -- A Lot\n\t    4 -- Extremely")
+
+
+class OutOfRangeError(Exception):
+	pass
+
+def checkInput():
+	while True:
+		try:
+			answer = int(input("\t>> "))
+			if (answer < 0 or answer > 4):
+				raise OutOfRangeError
+			return answer
+		except ValueError:
+			print("Please enter a valid integer (0, 1, 2, 3, or 4).")
+		except OutOfRangeError:
+			print("Please keep your answer within the range 0-4, inclusive.")
 
 def ask_all():
 	score = 0
 	print("\n", "Type a number 0-4 to indicate how much you have experienced each symptom during the past week, including today. Please answer all 25 items.", "\n")
 	for i, q in enumerate(questions):
-		print("\t", i+1, end=".) ")
-		ask(i)
-		score += int(input("\t>> "))
+		printQuestion(i)
+		answer = checkInput()
+		score += answer
 	interpret(score)	
 
 def interpret(score):
@@ -59,7 +76,5 @@ def interpret(score):
 ask_all()
 
 # add something to check for yeses on the last three questions and if so, provide a suicide hotline
-# add internal checks and validation and whatnot
 # make it so I can change previous answers
-# add the interpretation!
-# add a check for each input (right type, not out of bounds, etc.)
+# fix the input checking so that it adheres to error handling standards?
